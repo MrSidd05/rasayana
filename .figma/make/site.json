@@ -1,0 +1,10 @@
+{
+  "description": "Discover and shop customizable snack seasonings to add crave-worthy flavors to popcorn, makhana, and more for everyday treats, parties, and gatherings.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}

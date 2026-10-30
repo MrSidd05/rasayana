@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+:root {
+  --cream: #f7f1e7;
+  --paper: #fffaf0;
+  --ink: #231f1b;
+  --muted: #756b61;
+  --red: #d93b2b;
+  --yellow: #f2bc3a;
+  --green: #315b43;
+  --line: rgba(35, 31, 27, 0.14);
+  --font-body: "Manrope";
+  --font-display: "DM Serif Display";
+}
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--font-body), sans-serif; background: var(--cream); }
+  button, a, input, textarea, select { outline-offset: 3px; }
+  ::selection { background: var(--yellow); color: var(--ink); }
+}
+
+.font-display { font-family: var(--font-display), serif; }
+.text-balance { text-wrap: balance; }
+.grain {
+  background-image: radial-gradient(rgba(35,31,27,.08) .7px, transparent .7px);
+  background-size: 9px 9px;
+}
+.spice-orbit { animation: orbit 12s linear infinite; }
+.spice-float { animation: float 5s ease-in-out infinite; }
+.spice-float-delayed { animation: float 6s ease-in-out 1s infinite; }
+.marquee { animation: marquee 28s linear infinite; }
+.can-shadow { box-shadow: inset -18px 0 28px rgba(0,0,0,.15), inset 8px 0 15px rgba(255,255,255,.2), 0 28px 50px rgba(40,25,10,.18); }
+.hide-scrollbar::-webkit-scrollbar { display: none; }
+.hero-stage { perspective: 1100px; }
+.hero-bottle-backdrop {
+  background:
+    radial-gradient(circle at 50% 42%, rgba(255,250,240,.82) 0, rgba(255,250,240,.42) 34%, transparent 65%),
+    linear-gradient(145deg, rgba(255,255,255,.22), rgba(217,59,43,.08));
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.4), 0 28px 70px rgba(80,57,10,.12);
+}
+.hero-bottle-image {
+  filter: drop-shadow(0 2rem 1.4rem rgba(49,31,10,.22));
+  animation: bottle-breathe 5s ease-in-out infinite;
+  transform-origin: 50% 78%;
+  will-change: transform, filter;
+}
+.hero-product-enter { animation: flavour-reveal .7s cubic-bezier(.2,.8,.2,1) both; }
+.hero-canister-motion {
+  transform-style: preserve-3d;
+  transform-origin: 50% 22%;
+  will-change: transform;
+}
+.hero-canister-motion.is-sprinkling { animation: bottle-sprinkle 1.1s cubic-bezier(.4,0,.2,1) both; }
+.hero-canister-motion.is-shaking { animation: bottle-shake .7s cubic-bezier(.36,.07,.19,.97) both; }
+.spice-sprinkle-stream {
+  position: absolute;
+  left: calc(50% + 4rem);
+  top: 44%;
+  z-index: 8;
+  width: 7rem;
+  height: 11rem;
+  pointer-events: none;
+  transform: rotate(-18deg);
+}
+.spice-sprinkle-stream span {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: .45rem;
+  height: .45rem;
+  border-radius: 999px;
+  background: var(--red);
+  box-shadow: 0 0 8px rgba(217,59,43,.45);
+  animation: seasoning-fall .7s ease-in both;
+}
+.spice-sprinkle-stream span:nth-child(3n) { background: var(--yellow); }
+.spice-sprinkle-stream span:nth-child(4n) { background: var(--green); }
+.spice-sprinkle-stream span:nth-child(2) { margin-left: -2.8rem; animation-delay: .08s; }
+.spice-sprinkle-stream span:nth-child(3) { margin-left: -1.9rem; animation-delay: .14s; }
+.spice-sprinkle-stream span:nth-child(4) { margin-left: -1rem; animation-delay: .04s; }
+.spice-sprinkle-stream span:nth-child(5) { margin-left: .7rem; animation-delay: .18s; }
+.spice-sprinkle-stream span:nth-child(6) { margin-left: 1.7rem; animation-delay: .1s; }
+.spice-sprinkle-stream span:nth-child(7) { margin-left: 2.8rem; animation-delay: .22s; }
+.spice-sprinkle-stream span:nth-child(8) { margin-left: -2.3rem; animation-delay: .28s; }
+.spice-sprinkle-stream span:nth-child(9) { margin-left: -1.4rem; animation-delay: .33s; }
+.spice-sprinkle-stream span:nth-child(10) { margin-left: -.4rem; animation-delay: .25s; }
+.spice-sprinkle-stream span:nth-child(11) { margin-left: 1.1rem; animation-delay: .38s; }
+.spice-sprinkle-stream span:nth-child(12) { margin-left: 2.3rem; animation-delay: .3s; }
+.spice-sprinkle-stream span:nth-child(13) { margin-left: -.8rem; animation-delay: .43s; }
+.spice-sprinkle-stream span:nth-child(14) { margin-left: 1.8rem; animation-delay: .47s; }
+
+@keyframes float {
+  0%,100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-16px) rotate(2deg); }
+}
+@keyframes orbit {
+  to { transform: rotate(360deg); }
+}
+@keyframes marquee {
+  to { transform: translateX(-50%); }
+}
+@keyframes flavour-reveal {
+  from { opacity: 0; transform: rotate(2deg) scale(.94) translateZ(-60px); filter: saturate(.5) blur(6px); }
+  to { opacity: 1; transform: rotate(2deg) scale(1) translateZ(0); filter: saturate(1) blur(0); }
+}
+@keyframes bottle-breathe {
+  0%, 100% { transform: translateY(.3rem) rotateY(-3deg) scale(.98); filter: drop-shadow(0 1.7rem 1.2rem rgba(49,31,10,.2)); }
+  50% { transform: translateY(-.7rem) rotateY(3deg) scale(1.01); filter: drop-shadow(0 2.2rem 1.6rem rgba(49,31,10,.26)); }
+}
+@keyframes bottle-sprinkle {
+  0%, 100% { transform: rotateX(0) rotateY(0) rotateZ(0); }
+  28% { transform: translate3d(3rem, -2rem, 4rem) rotateX(-10deg) rotateY(-18deg) rotateZ(112deg); }
+  42% { transform: translate3d(3.2rem, -2rem, 4rem) rotateX(-10deg) rotateY(-18deg) rotateZ(122deg); }
+  54% { transform: translate3d(3rem, -2rem, 4rem) rotateX(-10deg) rotateY(-18deg) rotateZ(112deg); }
+  66% { transform: translate3d(3.2rem, -2rem, 4rem) rotateX(-10deg) rotateY(-18deg) rotateZ(122deg); }
+}
+@keyframes bottle-shake {
+  0%, 100% { transform: translateX(0) rotateY(0) rotateZ(0) scale(1); filter: blur(0); }
+  15% { transform: translateX(-1.2rem) rotateY(-14deg) rotateZ(-7deg) scale(1.04); }
+  30% { transform: translateX(1.2rem) rotateY(14deg) rotateZ(7deg) scale(1.04); }
+  45% { transform: translateX(-1rem) rotateY(-12deg) rotateZ(-6deg) scale(1.04); filter: blur(1px); }
+  60% { transform: translateX(1rem) rotateY(12deg) rotateZ(6deg) scale(1.04); }
+  75% { transform: translateX(-.5rem) rotateY(-6deg) rotateZ(-3deg) scale(1.02); }
+}
+@keyframes seasoning-fall {
+  0% { opacity: 0; transform: translate3d(0, 0, 2rem) scale(.2); }
+  15% { opacity: 1; }
+  100% { opacity: 0; transform: translate3d(0, 10rem, -2rem) rotate(220deg) scale(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+}
+
+.figma-custom-code-fragment { display: contents; }
+.figma-bypass-link {
+  position: fixed; top: 8px; left: 8px; z-index: 2147483647; transform: translateY(-150%);
+  border-radius: 6px; background: #111827; color: #fff; padding: 8px 12px;
+  font: 600 14px/1.2 system-ui, sans-serif; text-decoration: none;
+}
+.figma-bypass-link:focus { transform: translateY(0); }
